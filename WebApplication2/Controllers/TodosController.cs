@@ -9,15 +9,15 @@ namespace WebApplication2.Controllers
     [ApiController]
     public class TodosController : ControllerBase
     {
-        private Todoservice _todoservice;
+        private Todoservice _todoserviceall;
         public TodosController()
         {
-            _todoservice = new Todoservice();
+            _todoserviceall = new Todoservice();
         }
         [HttpGet("{id}")]
      public IActionResult Todos(int? id)
         {
-            var Mytodos = _todoservice.Alltodo();
+            var Mytodos = _todoserviceall.Alltodo();
             if (id is null) 
                 return Ok(Mytodos);
             Mytodos = Mytodos.Where(t => t.Id == id).ToList();
